@@ -3,6 +3,7 @@ from platform import system
 from bs4 import BeautifulSoup
 from re import compile as re_compile
 from time import sleep
+import os
 
 
 class SeleniumCrawler(object):
@@ -10,7 +11,8 @@ class SeleniumCrawler(object):
     def __init__(self):
         if system() == "Windows":
             self.browser = webdriver.Chrome(
-                "C:\\Users\\Philip\\chromedriver.exe")
+                "{0}chromedriver.exe".format(os.path.join(os.environ['HOME']))
+            )
         else:
             self.browser = webdriver.Chrome("chromedriver")
 
